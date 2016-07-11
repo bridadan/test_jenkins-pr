@@ -5,7 +5,7 @@ node('master') {
     checkout scm
     sh 'git rev-parse HEAD > commit.txt'
     def GITHUB_COMMIT = readFile 'commit.txt'
-    sh 'echot ${GITHUB_COMMIT}'
+    sh 'echo ${GITHUB_COMMIT}'
     sh 'git rev-list ${GITHUB_COMMIT} --parents -n 1'
     sh 'git rev-list ${GITHUB_COMMIT} --parents -n 1 > commit.txt'
     sh 'echo "Source file" > source.txt'
