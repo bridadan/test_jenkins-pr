@@ -7,8 +7,8 @@ node('master') {
     def GITHUB_COMMIT = readFile 'commit.txt'
     GITHUB_COMMIT = GITHUB_COMMIT.replaceAll("\\s","")
     sh 'echo "' + GITHUB_COMMIT + ' is done"'
-    sh 'git show ' + GITHUB_COMMIT + '^1 --pretty=format:%H'
-    sh 'git show ' + GITHUB_COMMIT + '^1 --pretty=format:%H > parent_commit.txt'
+    sh 'git show ' + GITHUB_COMMIT + '^1 --pretty=format:%H --no-notes'
+    sh 'git show ' + GITHUB_COMMIT + '^1 --pretty=format:%H --no-notes > parent_commit.txt'
     sh 'echo "Source file" > source.txt'
     archive 'source.txt'
     
