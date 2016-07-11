@@ -5,7 +5,8 @@ node('master') {
     sh 'echo "Source file" > source.txt'
     archive 'source.txt'
     stage 'Build'
-    echo env.commit
+    echo env.GIT_COMMIT
+    echo env.GIT_URL
     def build_job_ret = build job: 'build_matrix', parameters: [
         [$class: 'StringParameterValue', name: 'checkout_project_name', value: env.JOB_NAME],
         [$class: 'StringParameterValue', name: 'checkout_build_number', value: env.BUILD_NUMBER],
