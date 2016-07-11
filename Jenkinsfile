@@ -6,7 +6,7 @@ node('master') {
     sh 'git rev-parse HEAD > commit.txt'
     sh 'echo "Source file" > source.txt'
     archive 'source.txt'
-    def GITHUB_COMMIT = readFile 'checkout.txt'
+    def GITHUB_COMMIT = readFile 'commit.txt'
     echo GITHUB_COMMIT
     stage 'Build'
     def build_job_ret = build job: 'build_matrix', parameters: [
