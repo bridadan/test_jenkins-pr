@@ -16,7 +16,7 @@ node('master') {
         [$class: 'StringParameterValue', name: 'checkout_build_number', value: env.BUILD_NUMBER],
         [$class: 'StringParameterValue', name: 'GITHUB_COMMIT', value: parent_commit]
     ]
-    sh 'curl https://api.github.com/repos/bridadan/test_jenkins-pr/statuses/' + parent_commit + '?access_token=' + env.GITHUB_STATUS_TOKEN + ' -H "Content-Type: application/json" -X POST -d \'{"state":"success","target_url":"' + build_job_ret.getUrl() + '","description":"Job succeeded","context":"Build job"}\''
+    sh 'curl https://api.github.com/repos/bridadan/test_jenkins-pr/statuses/' + parent_commit + '?access_token=' + env.GITHUB_STATUS_TOKEN + ' -H "Content-Type: application/json" -X POST -d \'{"state":"success","target_url":"' + build_job_ret.build().getUrl() + '","description":"Job succeeded","context":"Build job"}\''
     
     stage 'Test'
     def test_job_ret = build job: 'test_matrix', parameters: [
