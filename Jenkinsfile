@@ -2,6 +2,7 @@ import org.jenkinsci.plugins.github.common.ExpandableMessage;
 
 node('master') {
     stage 'Checkout'
+    checkout scm
     sh 'git rev-parse HEAD > commit.txt'
     sh 'echo "Source file" > source.txt'
     archive 'commit.txt,source.txt'
