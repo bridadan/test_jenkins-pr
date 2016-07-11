@@ -5,7 +5,7 @@ node('master') {
     sh 'echo "Source file" > source.txt'
     archive 'source.txt'
     stage 'Build'
-    echo env.keys()
+    echo env.keySet()
     def build_job_ret = build job: 'build_matrix', parameters: [
         [$class: 'StringParameterValue', name: 'checkout_project_name', value: env.JOB_NAME],
         [$class: 'StringParameterValue', name: 'checkout_build_number', value: env.BUILD_NUMBER],
