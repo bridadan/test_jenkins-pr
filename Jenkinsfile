@@ -4,7 +4,8 @@ node('master') {
     stage 'Checkout'
     checkout scm
     sh 'git log'
-    sh 'git rev-parse HEAD > commit.txt'
+    sh 'git rev-list --parents -n 1'
+    sh 'git rev-list --parents -n 1 > commit.txt'
     sh 'echo "Source file" > source.txt'
     archive 'source.txt'
     def GITHUB_COMMIT = readFile 'commit.txt'
