@@ -1,8 +1,3 @@
-import groovyx.net.http.HTTPBuilder
-import static groovyx.net.http.ContentType.*
-import static groovyx.net.http.Method.*
-
-
 node('master') {
     stage 'Checkout'
     checkout scm
