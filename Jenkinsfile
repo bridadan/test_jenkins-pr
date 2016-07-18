@@ -2,6 +2,6 @@ node {
     stage 'Checkout'
     checkout scm
     stage 'Test'
-    sh 'echo README.md'
+    sh 'cat README.md'
     sh 'sleep 5'
 }
